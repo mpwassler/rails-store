@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <!-- These meta tags come first. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<%= csrf_meta_tags %>
+    <title></title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<%= javascript_pack_tag 'product_variations' %>
+	<%= stylesheet_pack_tag 'product_variations' %>
+    <!-- Include the CSS -->	
+    <link href="/dist/toolkit-light.min.css" rel="stylesheet">
+
+  </head>
+  <body>
+  	<nav class="iconav">
+  	  <a class="iconav-brand" href="../index.html">
+  	    <span class="icon icon-leaf iconav-brand-icon"></span>
+  	  </a>
+  	  <div class="iconav-slider">
+  	    <ul class="nav nav-pills iconav-nav flex-md-column">
+  	      <li class="nav-item">
+  	        <a class="nav-link" href="/catagories" title="Catagories" data-toggle="tooltip" data-placement="right" data-container="body">
+  	          <span class="icon icon-home"></span>
+  	          <small class="iconav-nav-label d-md-none">Catagories</small>
+  	        </a>
+  	      </li>
+  	      <li class="nav-item">
+  	        <a class="nav-link" href="/products" title="Products" data-toggle="tooltip" data-placement="right" data-container="body">
+  	          <span class="icon icon-text-document"></span>
+  	          <small class="iconav-nav-label d-md-none">Products</small>
+  	        </a>
+  	      </li>
+  	      <li class="nav-item">
+  	        <a class="nav-link" href="/orders" title="Orders" data-toggle="tooltip" data-placement="right" data-container="body">
+  	          <span class="icon icon-globe"></span>
+  	          <small class="iconav-nav-label d-md-none">Orders</small>
+  	        </a>
+  	      </li>
+  	      <li class="nav-item">
+  	        <a class="nav-link active" href="/settings" title="Settings" data-toggle="tooltip" data-placement="right" data-container="body">
+  	          <span class="icon icon-area-graph"></span>
+  	          <small class="iconav-nav-label d-md-none">Settings</small>
+  	        </a>
+  	      </li>  	      
+  	    </ul>
+  	  </div>
+  	</nav>
+  	<div class="container-fluid">
+    	<%= yield %>  		
+  	</div>
+    <!-- Include jQuery (required) and the JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> 
+    <script src="/bootstrap-assets/jquery.min.js"></script>
+    <script src="/bootstrap-assets/popper.min.js"></script>
+    <script src="/bootstrap-assets/chart.js"></script>
+    <script src="/bootstrap-assets/tablesorter.min.js"></script>
+    <script src="/bootstrap-assets/toolkit.js"></script>
+    <script src="/bootstrap-assets/application.js"></script>  
+    <script src="/dist/toolkit.js"></script> 
+  </body>
+</html>
