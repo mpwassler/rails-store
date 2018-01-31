@@ -1,0 +1,34 @@
+--catagory--
+<div class="row">
+    <div class="col-12">
+        <% @Catagories.each do |catagory| %>
+
+            <a href="/shop/<%= catagory.slug %>"> <%= catagory.title %></a>            
+
+        <% end %>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">       
+        <h1><%= @Catagory.title %> </h1>
+        <!--Catagory -->
+        --products--
+        <% @Catagory.products.each do |product| %>
+
+            <!--Catagory > Product -->
+            <h2><%= product.title %></h2>
+            <a href="<%= "#{@Catagory.slug}/#{product.slug}" %>"><%= product.title %></a><br>
+            
+            <!--Catagory > Product > Product variations -->
+            --variations--
+            <% product.product_variations.each do |variation| %>
+                <%= variation.title %> $<%= variation.price %><br>                
+            <% end %>
+            --variations--
+
+        <% end %>
+        --products--        
+    </div>
+</div>
+--catagory--
