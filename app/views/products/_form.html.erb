@@ -27,11 +27,8 @@
   </div>
 
   <div class="field form-group">
-    <%= form.label :catagory_id %>
-    <%= form.text_field :catagory_id, id: :product_catagory_id, class: 'form-control' %>
-  </div>
-  <div id='product-variations'>
-    <product-variations></product-variations>
+    <%= form.label :catagory_id %>    
+    <%= form.collection_select(:catagory_id, Catagory.all, :id, :title) %>
   </div>
 
   <div class="actions">

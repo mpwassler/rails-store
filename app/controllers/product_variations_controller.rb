@@ -61,6 +61,11 @@ class ProductVariationsController < ApplicationController
     end
   end
 
+  # GET /product_variations/products/1
+  def variations_by_id
+    render :json => ProductVariation.where( product_id: params[:id])
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product_variation

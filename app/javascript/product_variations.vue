@@ -1,8 +1,7 @@
 <script>
-import AddProductVariation from './components/add_product_variation.vue'
-import ProductVariationList from './components/product_variation_list.vue'
-import ProductVariationEdit from './components/product_variation_edit.vue'
 
+import ProductVariationList from './components/product_variation_list.vue'
+import ProductVariationForm from './components/product_variation_form.vue'
 const modes = {
   LIST: 'list',
   ADD: 'add',
@@ -12,7 +11,8 @@ const modes = {
 const data = () => ({
   message: "Hello Vue!",
   mode: modes.LIST,
-  variation: null
+  variation: null,
+  product_id: window.product || ""
 })
 
 const methods = {
@@ -29,6 +29,9 @@ const methods = {
     handleEdit(variation) {      
       this.variation = variation
       this.mode = modes.EDIT
+    },
+    handleSave(res){
+      this.mode = modes.LIST
     }
 }
 
@@ -36,11 +39,17 @@ const computed = {
   currentView(){
     switch (this.mode) {
       case modes.LIST:
-        return <ProductVariationList on-edit-variation={this.handleEdit} />
+        return <ProductVariationList product_id={this.product_id} on-edit-variation={this.handleEdit} />
       case modes.ADD:
-        return <AddProductVariation />
+        return  <ProductVariationForm on-save={this.handleSave} productId={this.product_id} />
       case modes.EDIT:
-        return <ProductVariationEdit variation={this.variation} />
+        return <ProductVariationForm 
+                on-save={this.handleSave}
+                title={this.variation.title}
+                sku={this.variation.sku}
+                price={this.variation.price}
+                id={this.variation.id}
+                productId={this.product_id} />
     }
   }
 }
@@ -52,14 +61,13 @@ export default {
   render() {
     return (
       <div class="variation_builder">
-        <p>Product Variations</p>
         <div>   
           {this.currentView}          
         </div>
         { modes.LIST == this.mode ? 
           <button onClick={this.switchView} class="btn btn-primary">Add Variation</button> 
         :
-          <button onClick={this.viewList} >Back</button>
+          <button onClick={this.viewList} class="btn btn-danger">Back</button>
         }        
       </div>
     )

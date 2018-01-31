@@ -1,6 +1,18 @@
-<h1>Editing Product</h1>
+<div class="row">
+	<div class="col-4 offset-1">
+        <h1>Editing Product</h1>
 
-<%= render 'form', product: @product %>
+        <%= render 'form', product: @product %>
 
-<%= link_to 'Show', @product %> |
-<%= link_to 'Back', products_path %>
+        <%= link_to 'Show', @product %> |
+        <%= link_to 'Back', products_path %>
+    </div>
+    <div class="col-4 offset-1">
+		<script>
+    		window.product = '<%= @product.id unless @product.nil? %>'
+  		</script>
+  		<div id='product-variations'>
+    		<product-variations></product-variations>
+  		</div>
+	</div>
+</div>

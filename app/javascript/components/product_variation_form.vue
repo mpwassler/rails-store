@@ -23,12 +23,21 @@ const methods = {
 
   handleSubmit(e) {
     e.preventDefault()
-    let {sku, title, price} = this.newFields
     if (this.id) {
-
+      let sku = this.newFields.sku || this.sku
+      let title = this.newFields.title || this.title
+      let price = this.newFields.price || this.price
+      window.axios.put(`/product_variations/${this.id}`, {
+        sku, title, price, product_id: this.productId
+      }).then((res) => {
+        this.$emit('save', res)
+      })
     } else {
+      let {sku, title, price} = this.newFields
       window.axios.post('/product_variations', {
-        sku, title, price, product_id: this.props.product_id
+        sku, title, price, product_id: this.productId
+      }).then((res) => {
+        this.$emit('save', res)
       })
     }    
   }
@@ -39,16 +48,14 @@ const props = {
   sku: {type: String, default: 'ABC123'},
   price: {type: Number, default:0},
   id: {type: Number},
-  productId: {type:null, default: 1}
+  productId: {type:null}
 }
 
 export default {
   data,
   methods,
   props,
-
-  render() {
-    console.log(this.props)
+  render() {    
     this.props = this.props || {}
   	return (
       <div >

@@ -6,4 +6,12 @@
 
 		<%= link_to 'Back', products_path %>			
 	</div>
+	<div class="col-4 offset-1">
+		<script>
+    		window.product = '<%= @product.id unless @product.nil? %>'
+  		</script>
+  		<div id='product-variations'>
+    		<product-variations></product-variations>
+  		</div>
+	</div>
 </div>
