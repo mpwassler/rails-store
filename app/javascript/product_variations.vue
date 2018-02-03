@@ -2,6 +2,7 @@
 
 import ProductVariationList from './components/product_variation_list.vue'
 import ProductVariationForm from './components/product_variation_form.vue'
+
 const modes = {
   LIST: 'list',
   ADD: 'add',
@@ -30,6 +31,7 @@ const methods = {
       this.variation = variation
       this.mode = modes.EDIT
     },
+    
     handleSave(res){
       this.mode = modes.LIST
     }

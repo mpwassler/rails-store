@@ -1,34 +1,32 @@
---catagory--
-<div class="row">
-    <div class="col-12">
-        <% @Catagories.each do |catagory| %>
-
-            <a href="/shop/<%= catagory.slug %>"> <%= catagory.title %></a>            
-
-        <% end %>
+<div id="main">
+    <div class="inner">
+        <header>
+            <h1><%= @Catagory.title %> </h1>            
+        </header>
+        <section class="tiles">
+            <% @Catagory.products.each do |product| %>
+                <article class="style1">                
+                    <img style="width:100%;" src="http://via.placeholder.com/250x250x" />
+                    <!--Catagory > Product -->
+                    <h2 style="margin: 0 0 0.5em 0;"><%= product.title %></h2>
+                    <!--Catagory > Product > Product variations -->                
+                    <% product.product_variations.each do |variation| %>
+                        <span><%= variation.title %> $<%= variation.price %></span><br>
+                    <% end %>
+                    <a href="<%= "#{@Catagory.slug}/#{product.slug}" %>"></a><br>                            
+                </article>
+            <% end %>            
+            <!--<article class="style1">
+                <span class="image">
+                    <img src="/images/pic01.jpg" alt="" />
+                </span>
+                <a href="generic.html">
+                    <h2>Magna</h2>
+                    <div class="content">
+                        <p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+                    </div>
+                </a>
+            </article>-->            
+        </section>
     </div>
 </div>
-
-<div class="row">
-    <div class="col-12">       
-        <h1><%= @Catagory.title %> </h1>
-        <!--Catagory -->
-        --products--
-        <% @Catagory.products.each do |product| %>
-
-            <!--Catagory > Product -->
-            <h2><%= product.title %></h2>
-            <a href="<%= "#{@Catagory.slug}/#{product.slug}" %>"><%= product.title %></a><br>
-            
-            <!--Catagory > Product > Product variations -->
-            --variations--
-            <% product.product_variations.each do |variation| %>
-                <%= variation.title %> $<%= variation.price %><br>                
-            <% end %>
-            --variations--
-
-        <% end %>
-        --products--        
-    </div>
-</div>
---catagory--
