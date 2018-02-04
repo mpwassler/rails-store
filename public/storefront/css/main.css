@@ -2836,7 +2836,7 @@
 /* Header */
 
 	#header {
-		padding: 8em 0 0.1em 0 ;
+		padding: 1em 0 8em 0 ;
 	}
 
 		#header .logo {
@@ -2848,7 +2848,7 @@
 			margin: 0 0 2.5em 0;
 			text-decoration: none;
 			text-transform: uppercase;
-			display: inline-block;
+			/* display: inline-block; */
 		}
 
 			#header .logo > * {
@@ -2862,8 +2862,7 @@
 
 				#header .logo .symbol img {
 					display: block;
-					width: 2em;
-					height: 2em;
+					width: 12em;					
 				}
 
 		#header nav {

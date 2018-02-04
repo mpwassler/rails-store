@@ -38,11 +38,5 @@ class CatagoriesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to catagory_url(@catagory)
   end
 
-  test "should destroy catagory" do
-    assert_difference('Catagory.count', -1) do
-      delete catagory_url(@catagory)
-    end
-
-    assert_redirected_to catagories_url
-  end
+  test "should destroy catagory" 
 end
