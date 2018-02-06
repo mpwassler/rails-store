@@ -38,5 +38,5 @@ class CatagoriesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to catagory_url(@catagory)
   end
 
-  test "should destroy catagory" 
+  
 end

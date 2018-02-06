@@ -2905,7 +2905,17 @@
 						letter-spacing: 0.35em;
 						text-transform: uppercase;
 					}
-
+					.icon.style2.fa-shopping-cart{}
+					#header nav ul li a[href="#cart"]:before {
+						font-size: 1.5em;
+					}
+					#header nav ul li a[href="#cart"] {
+						padding: 0;
+						font-size: 1em;
+						width: 4em;
+						margin-right: 5px;
+						
+					}
 					#header nav ul li a[href="#menu"] {
 						-webkit-tap-highlight-color: transparent;
 						width: 4em;

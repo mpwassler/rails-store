@@ -2,9 +2,13 @@ Rails.application.routes.draw do
   resources :product_variations
   resources :products
   resources :catagories
+  resource :cart do
+    post :add, path: "add/:id", to: 'cart#add'
+  end
+  
+  root 'shop#index'
   
   get 'default/index'
-  
   get 'shop', to: 'shop#index'
   get 'shop/:catagory/:product', to: 'shop#product'
   get 'shop/:catagory', to: 'shop#catagory'

@@ -1,6 +1,7 @@
 class ShopController < ApplicationController    
     before_action :set_shop_catagories, only: [:index, :product, :catagory]
-
+    before_action :init_cart
+    
     layout "storefront"
 
     def index          

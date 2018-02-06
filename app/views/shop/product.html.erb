@@ -8,7 +8,9 @@
                 <img style="width:100%;" src="http://via.placeholder.com/250x250x" />                
                 <!--Catagory > Product > Product variations -->                
                 <% @Product.product_variations.each do |variation| %>
-                    <span><%= variation.title %> $<%= variation.price %></span><br>
+                    <span><%= variation.title %> $<%= variation.price %></span><br><br>                                        
+                    <%= button_to 'Add to Cart', add_cart_path( :id => variation.id), method: :post %><br>
+
                 <% end %>
             </article> 
         </section>
