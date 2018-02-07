@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180204175352) do
+ActiveRecord::Schema.define(version: 20180207050852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "city"
+    t.string "state"
+    t.string "postal_code"
+    t.string "address_line_1"
+    t.string "address_line_2"
+    t.string "phone"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "catagories", force: :cascade do |t|
     t.string "title"
@@ -21,6 +35,30 @@ ActiveRecord::Schema.define(version: 20180204175352) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["slug"], name: "index_catagories_on_slug"
+  end
+
+  create_table "order_items", force: :cascade do |t|
+    t.bigint "order_id"
+    t.integer "quantity"
+    t.bigint "product_variation_id"
+    t.integer "price"
+    t.integer "total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["product_variation_id"], name: "index_order_items_on_product_variation_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "billing_address_id"
+    t.integer "shipping_address_id"
+    t.integer "total"
+    t.string "status"
+    t.string "payment_status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["billing_address_id"], name: "index_orders_on_billing_address_id"
+    t.index ["shipping_address_id"], name: "index_orders_on_shipping_address_id"
   end
 
   create_table "product_variations", force: :cascade do |t|
@@ -52,6 +90,8 @@ ActiveRecord::Schema.define(version: 20180204175352) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "product_variations"
   add_foreign_key "product_variations", "products"
   add_foreign_key "products", "catagories"
 end

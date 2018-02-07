@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  billing_address_id: 1
+  shipping_address_id: 1
+  total: 1
+  status: MyString
+  payment_status: MyString
+
+two:
+  billing_address_id: 1
+  shipping_address_id: 1
+  total: 1
+  status: MyString
+  payment_status: MyString
