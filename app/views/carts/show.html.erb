@@ -1,0 +1,39 @@
+<div id="main">
+    <div class="inner">
+    	<header>
+    		<h1>Cart</h1>
+    	</header>
+    	<table >
+    		<tr>
+    			<th>Title</th>
+    			<th>Variation</th>
+    			<th>Quantity</th>
+    			<th>Price</th>
+    			<th>  </th>
+    		</tr>
+    	<% @Cart.items.each do |item| %>
+    		<tr>
+    			<td>
+    				<%= item.product_parent.title  %>	
+    			</td>
+    			<td>
+    				<%= item.product.title  %>	
+    			</td>
+    			<td>
+    				x <%= item.quantity  %>
+    			</td>
+    			<td>
+    				$<%= item.product.price  %>				
+    			</td>
+    			<td>
+    				<a href="#">remove</a>
+    			</td>
+    		</tr>
+    	<% end %>
+    	</table>
+    	<p>
+    		Total: $<%= @Cart.total %>
+    		<a href="#">Checkout</a>
+    	</p>
+    </div>
+</div>

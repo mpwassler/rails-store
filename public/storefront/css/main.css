@@ -2906,10 +2906,10 @@
 						text-transform: uppercase;
 					}
 					.icon.style2.fa-shopping-cart{}
-					#header nav ul li a[href="#cart"]:before {
+					#header nav ul li a.cart:before {
 						font-size: 1.5em;
 					}
-					#header nav ul li a[href="#cart"] {
+					#header nav ul li a.cart {
 						padding: 0;
 						font-size: 1em;
 						width: 4em;

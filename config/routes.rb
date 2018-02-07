@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   resources :product_variations
   resources :products
   resources :catagories
-  resource :cart do
-    post :add, path: "add/:id", to: 'cart#add'
+  resource :carts, only: [ :show ] do
+    post :add, path: "add/:id", to: 'carts#add'
   end
   
   root 'shop#index'

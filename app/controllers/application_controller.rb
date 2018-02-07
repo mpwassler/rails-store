@@ -5,4 +5,8 @@ class ApplicationController < ActionController::Base
   	@Cart = Cart.build_from_hash session
   end
 
+  def set_shop_catagories
+        @Catagories = Catagory.all       
+    end
+
 end

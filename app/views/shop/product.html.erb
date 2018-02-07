@@ -9,7 +9,7 @@
                 <!--Catagory > Product > Product variations -->                
                 <% @Product.product_variations.each do |variation| %>
                     <span><%= variation.title %> $<%= variation.price %></span><br><br>                                        
-                    <%= button_to 'Add to Cart', add_cart_path( :id => variation.id), method: :post %><br>
+                    <%= button_to 'Add to Cart', add_carts_path( :id => variation.id), method: :post %><br>
 
                 <% end %>
             </article> 

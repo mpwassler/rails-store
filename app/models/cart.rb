@@ -4,11 +4,12 @@ class Cart
 	def self.build_from_hash hash
 		items = if hash['cart'] then 
 			hash['cart']['items'].map do |item|
-			CartItem.new item['product_id'], item['quantity']
+				CartItem.new item['product_id'], item['quantity']
 			end
 		else
 			[]
 		end
+		
 		new items
 	end
 
@@ -27,6 +28,10 @@ class Cart
 
 	def empty?
 		@items.empty?
+	end
+
+	def total
+		@items.inject(0) { |sum, n| sum + (n.price * n.quantity) }
 	end
 
 	def serialize

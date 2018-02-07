@@ -23,6 +23,38 @@ class CartTest < ActiveSupport::TestCase
 		assert_instance_of(ProductVariation, cart.items.first.product)
 	end
 
+	def test_can_get_product_price
+		cat = Catagory.create!(:title => 'test cat', :slug => 'test_cat')
+		product = Product.create!(:title => 'test', :slug => 'test-product', :catagory_id => cat.id)
+		variation = ProductVariation.create!(:sku => 'TEST', :title => 'test', :price => 100, :product_id => product.id)
+		cart = Cart.new 
+		cart.add_item variation.id
+		assert_equal 100, cart.items.first.price
+	end
+
+	def test_can_total_price_for_products 
+		cat = Catagory.create!(:title => 'test cat', :slug => 'test_cat')
+		product = Product.create!(:title => 'test', :slug => 'test-product', :catagory_id => cat.id)
+		variation1 = ProductVariation.create!(:sku => 'TEST1', :title => 'test1', :price => 100, :product_id => product.id)
+		variation2 = ProductVariation.create!(:sku => 'TEST2', :title => 'test2', :price => 200, :product_id => product.id)
+		variation3 = ProductVariation.create!(:sku => 'TEST3', :title => 'test3', :price => 300, :product_id => product.id)
+		cart = Cart.new 
+		cart.add_item variation1.id
+		cart.add_item variation1.id
+		cart.add_item variation2.id
+		cart.add_item variation3.id
+		assert_equal 700, cart.total
+	end
+
+	def test_gets_parent_product
+		cat = Catagory.create!(:title => 'test cat', :slug => 'test_cat')
+		product = Product.create!(:title => 'test', :slug => 'test-product', :catagory_id => cat.id)
+		variation1 = ProductVariation.create!(:sku => 'TEST1', :title => 'test1', :price => 100, :product_id => product.id)
+		cart = Cart.new 
+		cart.add_item variation1.id
+		assert_equal 'test', cart.items.first.product_parent.title
+	end
+
 	def test_sereializes
 		cart = Cart.new 
 		cart.add_item 1

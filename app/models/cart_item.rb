@@ -11,6 +11,15 @@ class CartItem
 	end
 
 	def product 
-		ProductVariation.find product_id
+		ProductVariation.find(product_id)
+	end
+
+	def product_parent
+		self.product.product
+	end
+
+	def price
+		product = self.product
+		product.price
 	end
 end
