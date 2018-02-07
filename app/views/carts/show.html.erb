@@ -23,7 +23,7 @@
     				x <%= item.quantity  %>
     			</td>
     			<td>
-    				$<%= item.product.price  %>				
+    				<%= (item.product.price * item.quantity).format  %>				
     			</td>
     			<td>
     				<a href="#">remove</a>
@@ -32,7 +32,7 @@
     	<% end %>
     	</table>
     	<p>
-    		Total: $<%= @Cart.total %>
+    		Total: <%= @Cart.total.format %>
     		<a href="#">Checkout</a>
     	</p>
     </div>

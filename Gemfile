@@ -33,6 +33,8 @@ gem 'webpacker', '~> 3.0'
 
 gem 'pg', '~> 0.18'
 
+gem 'money'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

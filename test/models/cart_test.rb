@@ -29,7 +29,9 @@ class CartTest < ActiveSupport::TestCase
 		variation = ProductVariation.create!(:sku => 'TEST', :title => 'test', :price => 100, :product_id => product.id)
 		cart = Cart.new 
 		cart.add_item variation.id
-		assert_equal 100, cart.items.first.price
+		assert_equal 100, cart.items.first.price.cents
+		assert_equal 1.00, cart.items.first.price.dollars
+		assert_equal '$1.00', cart.items.first.price.format
 	end
 
 	def test_can_total_price_for_products 
@@ -43,7 +45,9 @@ class CartTest < ActiveSupport::TestCase
 		cart.add_item variation1.id
 		cart.add_item variation2.id
 		cart.add_item variation3.id
-		assert_equal 700, cart.total
+		assert_equal 700, cart.total.cents
+		assert_equal 7.00, cart.total.dollars
+		assert_equal '$7.00', cart.total.format
 	end
 
 	def test_gets_parent_product
